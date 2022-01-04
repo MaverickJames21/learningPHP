@@ -5,6 +5,9 @@ namespace App\Observers;
 use App\Models\Post;
 use Cocur\Slugify\Slugify;
 use App\Providers\AppServiceProvider;
+use Illuminate\Support\Str;
+
+
 
 
 class PostObserver
@@ -17,8 +20,9 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        $instance = new Slugify();
-        $post->slug = $instance->slugify($post->title);
+
+
+        $post->slug = Str::slug($post->title, '-');
         $post->save();
     }
 

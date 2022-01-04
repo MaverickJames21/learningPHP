@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use App\Models\Post as ModelsPost;
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Post;
+use App\Observers\PostObserver;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Post::observer(PostObserver::class);
+        Post::observe(PostObserver::class);
 
     }
 }
