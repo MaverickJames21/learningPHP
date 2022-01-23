@@ -20,8 +20,6 @@ class PostObserver
      */
     public function created(Post $post)
     {
-
-
         $post->slug = Str::slug($post->title, '-');
         $post->save();
     }

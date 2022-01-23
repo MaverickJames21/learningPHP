@@ -14,19 +14,33 @@ class MainViewController extends Controller
         return view('home');
     }
 
+    public function news()
+    {
+
+        return view('news');
+    }
+
     public function chat()
     {
 
         return view('chat');
     }
 
+    public function form()
+    {
+
+        return view('form');
+    }
+
     public function post()
     {
 
-        $posts = Post::paginate(2);
+        $posts = Post::paginate(6);
         return view('post',[
             'posts' => $posts
         ]);
+
+        return view('chat');
     }
 
     public function store(Request $request){
@@ -39,7 +53,18 @@ class MainViewController extends Controller
                 'success'=>'chat message sent.'
 
             ]);
+        }
 
-    }
+
+     public function show($slug){
+
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('post',[
+            'post' => $post
+        ]);
+
+     }
+
+
 
 }

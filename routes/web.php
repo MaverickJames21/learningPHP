@@ -16,10 +16,19 @@ use Illuminate\Support\Facades\Auth;
 */
 // Main controller route
 Route::get('/', [ MainViewController::class,'home' ]);
+Route::get('news', [ MainViewController::class,'news' ]);
+
 Route::get('chat', [ MainViewController::class,'chat' ]);
-Route::get('post', [ MainViewController::class,'post' ]);
+Route::post('chat', [ MainViewController::class,'chat' ]);
+
+Route::get('post', [ MainViewController::class,'post' ])->name('post');
+Route::get('post/{slug}', [ MainViewController::class,'show' ])->name('post');
+
+Route::get('form', [ MainViewController::class,'form' ]);
+
+
 
 // login and register route auth
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
