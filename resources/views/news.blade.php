@@ -48,42 +48,42 @@
     <div class="container">
         <div class="row ">
 
-    {{-- second section articles --}}
-    <?php
+            {{-- second section articles --}}
+            <?php
 
 
-    $url = 'https://newsapi.org/v2/everything?q=apple&from=2022-01-22&to=2022-01-22&sortBy=popularity&apiKey=182706a4218e4d54820c0c72dd52488c';
-    $response = file_get_contents($url);
-    $newsData = json_decode($response);
+                $url = 'https://newsapi.org/v2/everything?q=apple&from=2022-01-22&to=2022-01-22&sortBy=popularity&apiKey=182706a4218e4d54820c0c72dd52488c';
+                $response = file_get_contents($url);
+                $newsData = json_decode($response);
 
-    foreach ($newsData->articles as $News) {
-
-
-  ?>
+                foreach ($newsData->articles as $News) {
 
 
-<div class="col-4 col-sm-12 col-lg-4 col-xl-4 col-md-6">
-            <div class="card">
-                <img src="<?php echo $News ->urlToImage ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                        <h5 class="card-title">Title: <?php echo $News ->title ?></h5>
-                        <p class="card-description">Description: <?php echo $News->description ?></p>
-                        <p class="card-content">Content: <?php echo $News->content ?></p>
-                        <a type="button" href="<?php echo $News ->url ?>" target="_blank"  class="btn btn-primary btn-sm">Read Article</a>
+            ?>
+
+
+                <div class="col-4 col-sm-12 col-lg-4 col-xl-4 col-md-6 g-4">
+                    <div class="card mt-3">
+                        <img src="<?php echo $News ->urlToImage ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                                <h1 class="card-title text-decoration-underline fw-bold"><?php echo $News ->title ?></h1>
+                                {{-- <p class="card-description"> <?php echo $News->description ?></p> --}}
+                                <p class="card-content"><?php echo $News->content ?></p>
+                                <a type="button" href="<?php echo $News ->url ?>" target="_blank"  class="btn btn-primary btn-sm">Read Article</a>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+
+
+
+            <?php
+            }
+            ?>
+
         </div>
 
-
-
-    <?php
-    }
-    ?>
-
-</div>
-</div>
-</div>
-
+    </div>
 
 @endsection
 
